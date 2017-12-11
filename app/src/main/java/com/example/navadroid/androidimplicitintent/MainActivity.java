@@ -12,6 +12,9 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static final int REQUEST_IMAGE_CAPTURE = 1;
+//    public static final Uri mLocationForPhotos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,15 +40,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.setData(Uri.parse("content://media/external/images/media/"));
                 startActivity(intent);
                 break;
-            case R.id.btn_intent_2:
-                // TODO: ???
+
+            case R.id.btn_intent_2                              :
+                // TODO: Call Burin
+                intent.setAction(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:0894299157"));
+                startActivity(intent);
                 break;
+
             case R.id.btn_intent_3:
-                // TODO: ???
+                // TODO: Open URL in browser
+                Uri webpage = Uri.parse("https://facebook.com");
+                intent = new Intent(Intent.ACTION_VIEW, webpage);
+                startActivity(intent);
                 break;
+
             case R.id.btn_intent_4:
-                // TODO: ???
+                // TODO: Camera
+                intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT,
+                        Uri.withAppendedPath(Uri.parse("content://media/external/images/media/"), "tong.jpg"));
+                startActivity(intent);
                 break;
+
             case R.id.btn_intent_5:
                 // TODO: ???
                 break;
